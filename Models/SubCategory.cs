@@ -7,10 +7,12 @@ namespace practice_shop_api.Models
 	{
 		public int Id { get; set; }
 		public string? Name { get; set; }
+		public string? Value { get; set; }
+		[JsonIgnore]
 		[ForeignKey("CategoryId")]
 		public int CategoryId { get; set; }
-		public Category? Category { get; set; }
 		[JsonIgnore]
+		public Category? Category { get; set; }
 		public List<Product> Products { get; set; } = new();
 	}
 }

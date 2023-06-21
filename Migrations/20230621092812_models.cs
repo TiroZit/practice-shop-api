@@ -7,7 +7,7 @@
 namespace practice_shop_api.Migrations
 {
     /// <inheritdoc />
-    public partial class Data : Migration
+    public partial class models : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,6 +59,7 @@ namespace practice_shop_api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SexId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -78,8 +79,8 @@ namespace practice_shop_api.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    SexId = table.Column<int>(type: "int", nullable: true)
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,11 +91,6 @@ namespace practice_shop_api.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_SubCategories_Sexs_SexId",
-                        column: x => x.SexId,
-                        principalTable: "Sexs",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -179,36 +175,36 @@ namespace practice_shop_api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Name", "SexId" },
+                columns: new[] { "Id", "Name", "SexId", "Value" },
                 values: new object[,]
                 {
-                    { 1, "Верхняя одежда", 1 },
-                    { 2, "Джинсы и брюки", 1 },
-                    { 3, "Толстовки и свитеры", 1 },
-                    { 4, "Футболки и поло", 1 },
-                    { 5, "Верхняя одежда", 2 },
-                    { 6, "Платья и юбки", 2 },
-                    { 7, "Футболки и лонгсливы", 2 }
+                    { 1, "Верхняя одежда", 1, null },
+                    { 2, "Джинсы и брюки", 1, null },
+                    { 3, "Толстовки и свитеры", 1, null },
+                    { 4, "Футболки и поло", 1, null },
+                    { 5, "Верхняя одежда", 2, null },
+                    { 6, "Платья и юбки", 2, null },
+                    { 7, "Футболки и лонгсливы", 2, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "SubCategories",
-                columns: new[] { "Id", "CategoryId", "Name", "SexId" },
+                columns: new[] { "Id", "CategoryId", "Name", "Value" },
                 values: new object[,]
                 {
-                    { 1, 1, "Куртки", null },
-                    { 2, 1, "Жилеты", null },
-                    { 3, 2, "Шорты", null },
-                    { 4, 2, "Джинсы", null },
-                    { 5, 3, "Свитшоты", null },
-                    { 6, 3, "Толстовки и худи", null },
-                    { 7, 4, "Футболки", null },
-                    { 8, 4, "Поло", null },
-                    { 9, 5, "Джинсовые куртки", null },
-                    { 10, 6, "Платья", null },
-                    { 11, 6, "Юбки", null },
-                    { 12, 7, "Футболки и топы", null },
-                    { 13, 7, "Лонгсливы", null }
+                    { 1, 1, "Куртки", "jackets" },
+                    { 2, 1, "Жилеты", "vests" },
+                    { 3, 2, "Шорты", "shorts" },
+                    { 4, 2, "Джинсы", "jeans" },
+                    { 5, 3, "Свитшоты", "sweatshirts" },
+                    { 6, 3, "Толстовки и худи", "sweatshirts-and-hoodies" },
+                    { 7, 4, "Футболки", "t-shirts" },
+                    { 8, 4, "Поло", "polo" },
+                    { 9, 5, "Джинсовые куртки", "denim-jackets" },
+                    { 10, 6, "Платья", "dresses" },
+                    { 11, 6, "Юбки", "skirts" },
+                    { 12, 7, "Футболки и топы", "t-shirts" },
+                    { 13, 7, "Лонгсливы", "longshirts" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,11 +252,6 @@ namespace practice_shop_api.Migrations
                 name: "IX_SubCategories_CategoryId",
                 table: "SubCategories",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubCategories_SexId",
-                table: "SubCategories",
-                column: "SexId");
         }
 
         /// <inheritdoc />

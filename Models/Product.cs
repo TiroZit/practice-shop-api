@@ -21,6 +21,7 @@ namespace practice_shop_api.Models
 		public Sex? Sex { get; set; }
 		public int? SubCategoryId { get; set; }
 		[ForeignKey("SubCategoryId")]
+		[JsonIgnore]
 		public SubCategory? SubCategory { get; set; }
 	}
 }

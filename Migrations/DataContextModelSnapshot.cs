@@ -17,7 +17,7 @@ namespace practice_shop_api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -35,6 +35,9 @@ namespace practice_shop_api.Migrations
 
                     b.Property<int?>("SexId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -411,14 +414,12 @@ namespace practice_shop_api.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SexId")
-                        .HasColumnType("int");
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("SexId");
 
                     b.ToTable("SubCategories");
 
@@ -427,79 +428,92 @@ namespace practice_shop_api.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            Name = "Куртки"
+                            Name = "Куртки",
+                            Value = "jackets"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
-                            Name = "Жилеты"
+                            Name = "Жилеты",
+                            Value = "vests"
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 2,
-                            Name = "Шорты"
+                            Name = "Шорты",
+                            Value = "shorts"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            Name = "Джинсы"
+                            Name = "Джинсы",
+                            Value = "jeans"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 3,
-                            Name = "Свитшоты"
+                            Name = "Свитшоты",
+                            Value = "sweatshirts"
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 3,
-                            Name = "Толстовки и худи"
+                            Name = "Толстовки и худи",
+                            Value = "sweatshirts-and-hoodies"
                         },
                         new
                         {
                             Id = 7,
                             CategoryId = 4,
-                            Name = "Футболки"
+                            Name = "Футболки",
+                            Value = "t-shirts"
                         },
                         new
                         {
                             Id = 8,
                             CategoryId = 4,
-                            Name = "Поло"
+                            Name = "Поло",
+                            Value = "polo"
                         },
                         new
                         {
                             Id = 9,
                             CategoryId = 5,
-                            Name = "Джинсовые куртки"
+                            Name = "Джинсовые куртки",
+                            Value = "denim-jackets"
                         },
                         new
                         {
                             Id = 10,
                             CategoryId = 6,
-                            Name = "Платья"
+                            Name = "Платья",
+                            Value = "dresses"
                         },
                         new
                         {
                             Id = 11,
                             CategoryId = 6,
-                            Name = "Юбки"
+                            Name = "Юбки",
+                            Value = "skirts"
                         },
                         new
                         {
                             Id = 12,
                             CategoryId = 7,
-                            Name = "Футболки и топы"
+                            Name = "Футболки и топы",
+                            Value = "t-shirts"
                         },
                         new
                         {
                             Id = 13,
                             CategoryId = 7,
-                            Name = "Лонгсливы"
+                            Name = "Лонгсливы",
+                            Value = "longshirts"
                         });
                 });
 
@@ -519,7 +533,7 @@ namespace practice_shop_api.Migrations
                         .HasForeignKey("ColorId");
 
                     b.HasOne("practice_shop_api.Models.Sex", "Sex")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("SexId");
 
                     b.HasOne("practice_shop_api.Models.Size", "Sizes")
@@ -547,10 +561,6 @@ namespace practice_shop_api.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("practice_shop_api.Models.Sex", null)
-                        .WithMany("SubCategories")
-                        .HasForeignKey("SexId");
-
                     b.Navigation("Category");
                 });
 
@@ -567,10 +577,6 @@ namespace practice_shop_api.Migrations
             modelBuilder.Entity("practice_shop_api.Models.Sex", b =>
                 {
                     b.Navigation("Categories");
-
-                    b.Navigation("Products");
-
-                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("practice_shop_api.Models.Size", b =>

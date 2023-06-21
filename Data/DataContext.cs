@@ -22,42 +22,49 @@ namespace practice_shop_api.Data
 				{ 
 					Id = 1,
 					Name = "Верхняя одежда",
+					//Value = "outerwear",
 					SexId = 1,
 				},
 				new Category 
 				{ 
 					Id = 2,
 					Name = "Джинсы и брюки",
+					//Value = "jeans-and-pants",
 					SexId = 1,
 				},
 				new Category 
 				{ 
 					Id = 3,
 					Name = "Толстовки и свитеры",
+					//Value = "sweatshirts-and-Sweaters",
 					SexId = 1,
 				},
 				new Category 
 				{ 
 					Id = 4,
 					Name = "Футболки и поло",
+					//Value = "t-shirts-and-polos",
 					SexId = 1,
 				},
 				new Category 
 				{ 
 					Id = 5,
 					Name = "Верхняя одежда",
+					//Value = "outerwear",
 					SexId = 2,
 				},
 				new Category 
 				{ 
 					Id = 6,
 					Name = "Платья и юбки",
+					//Value = "dresses-and-Skirts",
 					SexId = 2,
 				},
 				new Category 
 				{ 
 					Id = 7,
 					Name = "Футболки и лонгсливы",
+					//Value = "t-shirts-and-longsleeves",
 					SexId = 2,
 				}
 			);
@@ -69,78 +76,91 @@ namespace practice_shop_api.Data
 				{
 					Id = 1,
 					Name = "Куртки",
+					Value = "jackets",
 					CategoryId = 1,
 				},
 				new SubCategory
 				{
 					Id = 2,
 					Name = "Жилеты",
+					Value = "vests",
 					CategoryId = 1,
 				},
 				new SubCategory
 				{
 					Id = 3,
 					Name = "Шорты",
+					Value = "shorts",
 					CategoryId = 2,
 				},
 				new SubCategory
 				{
 					Id = 4,
 					Name = "Джинсы",
+					Value = "jeans",
 					CategoryId = 2,
 				},
 				new SubCategory
 				{
 					Id = 5,
 					Name = "Свитшоты",
+					Value = "sweatshirts",
 					CategoryId = 3,
 				},
 				new SubCategory
 				{
 					Id = 6,
 					Name = "Толстовки и худи",
+					Value = "sweatshirts-and-hoodies",
 					CategoryId = 3,
 				},
 				new SubCategory
 				{
 					Id = 7,
 					Name = "Футболки",
+					Value = "t-shirts",
 					CategoryId = 4,
 				},
 				new SubCategory
 				{
 					Id = 8,
 					Name = "Поло",
+					Value = "polo",
 					CategoryId = 4,
 				},
 				new SubCategory
 				{
 					Id = 9,
 					Name = "Джинсовые куртки",
+					Value = "denim-jackets",
 					CategoryId = 5,
 				},
 				new SubCategory
 				{
 					Id = 10,
 					Name = "Платья",
+					Value = "dresses",
 					CategoryId = 6,
 				},
 				new SubCategory
 				{
 					Id = 11,
 					Name = "Юбки",
+					Value = "skirts",
 					CategoryId = 6,
 				},
 				new SubCategory
 				{
 					Id = 12,
 					Name = "Футболки и топы",
+					Value = "t-shirts",
 					CategoryId = 7,
 				},
 				new SubCategory
 				{
 					Id = 13,
 					Name = "Лонгсливы",
+					Value = "longshirts",
 					CategoryId = 7,
 				}
 			);
