@@ -40,9 +40,11 @@ namespace practice_shop_api.Controllers
           {
               return NotFound();
           }
-            var subCategory = await _context.SubCategories.FindAsync(id);
+			var subCategory = await _context.SubCategories
+	            .Include(c => c.Products)
+	            .FirstOrDefaultAsync(c => c.Id == id);
 
-            if (subCategory == null)
+			if (subCategory == null)
             {
                 return NotFound();
             }
